@@ -23,9 +23,9 @@ export function Navbar() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group" onClick={closeMenu}>
             <div className="relative w-8 h-8 -translate-y-1">
-              <Image src="/logo-star-transparent.svg" alt="Progress Together Logo" fill className="object-contain" />
+              <Image src="/assets/svg/star-nobg.svg" alt="Progress Together Logo" fill className="object-contain" />
             </div>
-            <span className="font-heading font-semibold text-2xl md:text-3xl tracking-tight text-primary">
+            <span className="font-heading font-semibold text-xl sm:text-2xl md:text-3xl tracking-tight text-primary">
               Progress<span className="text-foreground">Together</span>
             </span>
           </Link>
@@ -48,9 +48,11 @@ export function Navbar() {
           </nav>
 
           {/* Mobile Nav Toggle */}
-          <button className="md:hidden p-2 text-foreground" onClick={toggleMenu} aria-label="Toggle Menu">
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center gap-4">
+            <button className="p-2 text-foreground" onClick={toggleMenu} aria-label="Toggle Menu">
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </header>
 

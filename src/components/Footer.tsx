@@ -9,9 +9,9 @@ export function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-4">
               <div className="relative w-8 h-8 -translate-y-1">
-                <Image src="/logo-star-transparent.svg" alt="Progress Together Logo" fill className="object-contain" />
+                <Image src="/assets/svg/star-nobg.svg" alt="Progress Together Logo" fill className="object-contain" />
               </div>
-              <span className="font-heading font-semibold text-3xl text-primary">
+              <span className="font-heading font-semibold text-2xl sm:text-3xl text-primary">
                 Progress<span className="text-foreground">Together</span>
               </span>
             </Link>

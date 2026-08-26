@@ -29,8 +29,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${plusJakartaSans.variable} ${newsreader.variable} ${caveat.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+        <noscript>
+          <style>{`
+            div[style*="opacity: 0"] {
+              opacity: 1 !important;
+              transform: none !important;
+            }
+          `}</style>
+        </noscript>
         <Navbar />
         <main className="flex-1">
           {children}

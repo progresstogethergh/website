@@ -4,34 +4,16 @@ import { Quote } from "lucide-react";
 export default function TestimonialsPage() {
   const testimonials = [
     {
-      quote: "MaryEllen completely transformed my son's approach to math. He used to dread homework, but now he actually looks forward to their sessions. Her patience is unmatched.",
-      author: "Sarah J.",
-      role: "Parent of 4th Grader",
+      quote: "Maryellen Lees has tutored three of my children. Subjects included logic and middle and high school levels of English Composition and Literature. All three benefited from her practical, consistent, quantifiable methodology, detailed instruction, careful review of multiple drafts, and rubrics for students to assess their own work. I also appreciated her contributions to my students' educations in literature and logic, areas where I felt less qualified.",
+      author: "Heather Luxon",
+      role: "Mason OH",
       delay: 0.1,
     },
     {
-      quote: "As a former coworker, I can confidently say that MaryEllen is one of the most dedicated educators I've ever met. She has an incredible ability to break down complex concepts into bite-sized, understandable pieces.",
-      author: "David L.",
-      role: "Fellow Teacher",
+      quote: "Maryellen possesses an exceptional aptitude for inspiring students to develop a life long appreciation for writing and literature. Her extensive experience in methodical writing instruction makes her an ideal candidate to provide personalized tutoring services for any student.",
+      author: "Amy Claire",
+      role: "Campus Administrator, Providence Extension Program, Mason OH",
       delay: 0.2,
-    },
-    {
-      quote: "Before working with Progress Together, my daughter was struggling with reading comprehension. In just a few months, her reading level jumped significantly, and her confidence soared.",
-      author: "Elena M.",
-      role: "Parent of 2nd Grader",
-      delay: 0.3,
-    },
-    {
-      quote: "MaryEllen doesn't just teach; she mentors. She takes the time to know each student personally, which makes her instruction so much more effective.",
-      author: "Robert T.",
-      role: "School Administrator",
-      delay: 0.4,
-    },
-    {
-      quote: "I highly recommend MaryEllen to any parent looking for customized support. She provided exactly what my child needed to catch up after falling behind during the remote learning year.",
-      author: "Jennifer K.",
-      role: "Parent of 6th Grader",
-      delay: 0.5,
     }
   ];
 
@@ -47,30 +29,28 @@ export default function TestimonialsPage() {
           </p>
         </FadeIn>
 
-        {/* Masonry-style Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Testimonial List */}
+        <div className="flex flex-col gap-16 md:gap-24 max-w-4xl mx-auto">
           {testimonials.map((testimonial, idx) => (
-            <FadeIn key={idx} delay={testimonial.delay} className={`flex ${idx % 2 === 0 ? 'md:mt-8' : ''}`}>
-              <div className="bg-card p-8 sketchy-border flex flex-col h-full relative">
-                <Quote className="w-10 h-10 text-primary/20 absolute top-6 left-6" />
-                <p className="text-foreground/90 italic mb-8 relative z-10 pt-4 leading-relaxed flex-1">
+            <FadeIn key={idx} delay={testimonial.delay}>
+              <div className="flex flex-col relative pl-10 md:pl-16">
+                <Quote className="w-8 h-8 md:w-12 md:h-12 text-primary/20 absolute -top-1 md:-top-2 left-0 md:-left-2" />
+                <p className="text-foreground/90 italic text-lg md:text-2xl mb-6 md:mb-8 relative z-10 leading-relaxed">
                   &quot;{testimonial.quote}&quot;
                 </p>
-                <div className="mt-auto border-t border-border/50 pt-4">
-                  <p className="font-heading font-semibold text-lg text-primary">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                <div className="pl-3 md:pl-4 border-l-2 border-primary/20">
+                  <p className="font-heading font-semibold text-xl md:text-2xl text-primary">{testimonial.author}</p>
+                  <p className="text-muted-foreground text-sm md:text-base">{testimonial.role}</p>
                 </div>
               </div>
             </FadeIn>
           ))}
           
-          {/* Abstract filler block for asymmetrical look */}
-          <FadeIn delay={0.6} className="hidden lg:flex">
-            <div className="bg-secondary/10 p-8 sketchy-border flex items-center justify-center h-full text-center">
-              <div>
-                <p className="font-heading text-2xl text-secondary mb-2">Ready to add your story?</p>
-                <p className="text-muted-foreground text-sm">Let&apos;s start making progress together today.</p>
-              </div>
+          {/* Abstract filler block */}
+          <FadeIn delay={0.4}>
+            <div className="mt-8 border-t border-border/50 pt-16 text-center">
+              <p className="font-heading text-3xl text-secondary mb-4">Ready to add your story?</p>
+              <p className="text-muted-foreground text-lg">Let&apos;s start making progress together today.</p>
             </div>
           </FadeIn>
         </div>
