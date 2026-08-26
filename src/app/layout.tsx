@@ -20,8 +20,33 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Progress Together",
-  description: "Building skills. Growing confidence. Progress is better together.",
+  title: "Progress Together | Maryellen Lees Tutoring",
+  description: "Building skills. Growing confidence. Progress is better together. Customized tutoring by Maryellen Lees.",
+  metadataBase: new URL("https://progresstogether.net"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Progress Together | Maryellen Lees Tutoring",
+    description: "Building skills. Growing confidence. Progress is better together.",
+    url: "https://progresstogether.net",
+    siteName: "Progress Together",
+    images: [
+      {
+        url: "/assets/img/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Progress Together",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Progress Together",
+    description: "Building skills. Growing confidence. Progress is better together.",
+    images: ["/assets/img/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -1,8 +1,31 @@
+"use client";
 import { FadeIn } from "@/components/FadeIn";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", message: "", honeypot: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.honeypot) return; // Spam detected
+    
+    // Basic validation
+    if (!formData.firstName || !formData.email || !formData.message) {
+      setStatus("error");
+      return;
+    }
+
+    setStatus("submitting");
+    // Simulate submission since no backend is configured yet
+    setTimeout(() => {
+      setStatus("success");
+      setFormData({ firstName: "", lastName: "", email: "", message: "", honeypot: "" });
+    }, 1500);
+  };
+
   return (
     <div className="flex flex-col gap-16 md:gap-24 py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -28,7 +51,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-heading text-lg mb-1">Phone</h3>
-                  <p className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">(513) 505-2995</p>
+                  <a href="tel:+15135052995" className="text-muted-foreground hover:text-primary transition-colors block">(513) 505-2995</a>
                 </div>
               </div>
 
@@ -38,7 +61,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-heading text-lg mb-1">Email</h3>
-                  <p className="text-muted-foreground hover:text-secondary transition-colors cursor-pointer">maryellen@progresstogether.net</p>
+                  <a href="mailto:maryellen@progresstogether.net" className="text-muted-foreground hover:text-secondary transition-colors block break-all">maryellen@progresstogether.net</a>
                 </div>
               </div>
 
@@ -52,46 +75,49 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-
-            <div className="mt-12 pt-8 border-t border-border">
-              <h3 className="font-heading text-lg mb-4">Follow Us</h3>
-              <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors font-medium text-xs">
-                  FB
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-secondary hover:text-secondary-foreground transition-colors font-medium text-xs">
-                  IG
-                </a>
-              </div>
-            </div>
           </div>
 
           {/* Quick Contact Form Placeholder */}
           <div className="bg-muted sketchy-border p-6 sm:p-8 md:p-12 h-full flex flex-col justify-center">
             <h2 className="text-3xl font-heading mb-6">Send a Message</h2>
-            <form className="space-y-4 flex-1 flex flex-col mt-2">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">First Name</label>
-                  <input type="text" className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Jane" />
+            {status === "success" ? (
+              <div className="flex flex-col items-center justify-center text-center p-8 flex-1">
+                <CheckCircle2 className="w-16 h-16 text-primary mb-4" />
+                <h3 className="text-2xl font-heading mb-2">Message Sent!</h3>
+                <p className="text-muted-foreground mb-6">Thank you for reaching out. I&apos;ll get back to you shortly.</p>
+                <Button onClick={() => setStatus("idle")} variant="outline" className="sketchy-btn">Send Another</Button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col mt-2">
+                {/* Honeypot Spam Protection */}
+                <input type="text" name="honeypot" style={{ display: "none" }} tabIndex={-1} autoComplete="off" value={formData.honeypot} onChange={(e) => setFormData({...formData, honeypot: e.target.value})} />
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">First Name *</label>
+                    <input required type="text" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Jane" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">Last Name</label>
+                    <input type="text" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Doe" />
+                  </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">Last Name</label>
-                  <input type="text" className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Doe" />
+                  <label className="text-sm font-medium text-foreground">Email *</label>
+                  <input required type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="jane@example.com" />
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Email</label>
-                <input type="email" className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="jane@example.com" />
-              </div>
-              <div className="space-y-2 flex-1">
-                <label className="text-sm font-medium text-foreground">Message</label>
-                <textarea className="w-full h-32 bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none" placeholder="Tell me a little about your student and what you're looking for..."></textarea>
-              </div>
-              <Button className="w-full sketchy-btn bg-primary text-primary-foreground hover:bg-primary/90 mt-4 py-6 text-lg">
-                Send Message
-              </Button>
-            </form>
+                <div className="space-y-2 flex-1">
+                  <label className="text-sm font-medium text-foreground">Message *</label>
+                  <textarea required value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full h-32 bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none" placeholder="Tell me a little about your student and what you're looking for..."></textarea>
+                </div>
+                
+                {status === "error" && <p className="text-destructive text-sm font-medium">Please fill out all required fields.</p>}
+                
+                <Button disabled={status === "submitting"} type="submit" className="w-full sketchy-btn bg-primary text-primary-foreground hover:bg-primary/90 mt-4 py-6 text-lg disabled:opacity-50 transition-all">
+                  {status === "submitting" ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            )}
           </div>
 
         </div>
