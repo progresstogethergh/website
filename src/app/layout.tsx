@@ -53,18 +53,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${newsreader.variable} ${caveat.variable} h-full antialiased`}
+      className={`no-js ${plusJakartaSans.variable} ${newsreader.variable} ${caveat.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.remove('no-js');` }} />
+      </head>
       <body className="min-h-full flex flex-col">
-        <noscript>
-          <style>{`
-            div[style*="opacity: 0"] {
-              opacity: 1 !important;
-              transform: none !important;
-            }
-          `}</style>
-        </noscript>
         <Navbar />
         <main className="flex-1">
           {children}

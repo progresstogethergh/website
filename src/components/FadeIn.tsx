@@ -12,10 +12,10 @@ interface FadeInProps {
 
 export function FadeIn({ children, delay = 0, direction = "up", className = "" }: FadeInProps) {
   const directions = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { x: 40, y: 0 },
-    right: { x: -40, y: 0 },
+    up: { y: 20, x: 0 },
+    down: { y: -20, x: 0 },
+    left: { x: 20, y: 0 },
+    right: { x: -20, y: 0 },
     none: { x: 0, y: 0 },
   };
 
@@ -32,9 +32,9 @@ export function FadeIn({ children, delay = 0, direction = "up", className = "" }
       }}
       viewport={{ once: true, margin: "0px" }}
       transition={{
-        duration: 0.7,
+        duration: 0.35,
         delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeOut",
       }}
       className={className}
     >

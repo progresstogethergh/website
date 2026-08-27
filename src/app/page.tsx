@@ -14,12 +14,12 @@ export default function Home() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 mt-8 md:mt-16">
         <div className="flex items-center justify-center">
-          <div className="flex flex-row items-center gap-[0.5em] text-[clamp(1.8rem,9vw,7rem)]">
+          <div className="flex flex-row items-end gap-[0.5em] text-[clamp(1.8rem,9vw,7rem)]">
             
             {/* Left: Large Logo */}
-            <FadeIn direction="left" className="relative w-[2.7em] h-[2.7em] shrink-0">
+            <FadeIn direction="left" className="relative w-[3.2em] h-[3.2em] shrink-0">
               <Image 
-                src={logoSvg} 
+                src={logoSvg}
                 alt="Progress Together Logo" 
                 fill 
                 className="object-contain" 

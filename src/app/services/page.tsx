@@ -2,6 +2,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { Monitor, MapPin, CheckCircle2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { ServiceAccordion } from "@/components/ServiceAccordion";
 
 export default function ServicesPage() {
   return (
@@ -53,6 +54,113 @@ export default function ServicesPage() {
               <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5"/> Rates include tutor preparation time</li>
               <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5"/> Based on scheduled instruction time plus actual travel time</li>
             </ul>
+          </div>
+        </div>
+
+        {/* Description of Services */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <h2 className="text-4xl font-heading mb-8 text-center">Description of Services</h2>
+          <div className="space-y-4">
+            {[
+              {
+                title: "1. Comprehensive Academic Tutoring",
+                items: [
+                  "All ages, online and in-person, individual or group",
+                  "Subject-specific academic support",
+                  "Coursework & assignment support",
+                  "Test, quiz, and exam preparation",
+                  "SAT/ACT preparation",
+                  "Advanced learning & enrichment",
+                  "Summer skill building & concept reinforcement"
+                ]
+              },
+              {
+                title: "2. Academic Skills & Strategies",
+                items: [
+                  "Time management & organization",
+                  "Planning & prioritization",
+                  "Study & note-taking strategies",
+                  "Test-taking strategies",
+                  "Public speaking & presentation skills",
+                  "Goal setting & accountability",
+                  "Academic confidence & independence"
+                ]
+              },
+              {
+                title: "3. Mentoring",
+                items: [
+                  "Academic mentoring",
+                  "High School-to-college transition",
+                  "College & career readiness",
+                  "Decision-making & problem-solving",
+                  "Goal-setting & accountability partnerships",
+                  "Academic planning & progress support",
+                  "Personal growth & future planning"
+                ]
+              },
+              {
+                title: "4. Career & Professional Coaching",
+                items: [
+                  "Career exploration & planning",
+                  "Strengths & skills assessment",
+                  "Resume & cover letter development",
+                  "LinkedIn & professional profile development",
+                  "Job-search strategy & interview preparation",
+                  "Professional communication & advocacy",
+                  "Business & entrepreneurship consulting"
+                ]
+              },
+              {
+                title: "5. Life Coaching",
+                items: [
+                  "Personal goals & planning",
+                  "Decision-making & problem-solving",
+                  "Personal growth & future planning",
+                  "Stress management and life balance",
+                  "Self-advocacy and independence",
+                  "Financial literacy consulting"
+                ]
+              },
+              {
+                title: "6. Specialized & Supplemental Offerings",
+                items: [
+                  "Parent/student academic consulting",
+                  "Curriculum development",
+                  "Academic planning & progress consulting",
+                  "Assignment evaluation & feedback",
+                  "Piano instruction & music appreciation"
+                ]
+              },
+              {
+                title: "7. Group Learning & Workshops",
+                items: [
+                  "Writing workshops",
+                  "Study-skills & time management workshops",
+                  "Literary analysis & annotation workshops",
+                  "Test preparation workshops",
+                  "Career-planning workshops",
+                  "Resume-building workshops",
+                  "Interview preparation workshops",
+                  "Professional-development workshops"
+                ]
+              },
+              {
+                title: "8. Premium & Ongoing Services",
+                items: [
+                  "Monthly coaching packages",
+                  "Weekly tutoring packages",
+                  "Semester-long academic support",
+                  "Year-round mentoring",
+                  "Career-transition packages",
+                  "Executive coaching retainers",
+                  "Customized education/coaching plans",
+                  "Progress tracking and reporting",
+                  "Multi-session intensive programs"
+                ]
+              }
+            ].map((service, index) => (
+              <ServiceAccordion key={index} service={service} />
+            ))}
           </div>
         </div>
 

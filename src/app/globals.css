@@ -172,3 +172,9 @@
     animation: drawUnderline 1s ease-out 0.6s both;
   }
 }
+
+/* Fallback for users with JavaScript disabled */
+.no-js div[style*="opacity: 0"] {
+  opacity: 1 !important;
+  transform: none !important;
+}
