@@ -51,7 +51,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-heading text-lg mb-1">Phone</h3>
-                  <a href="tel:+15135052995" className="text-muted-foreground hover:text-primary transition-colors block">(513) 505-2995</a>
+                  <a href="tel:+15135052995" className="text-muted-foreground hover:text-primary transition-colors block">(123) 456-7890</a>
                 </div>
               </div>
 
@@ -90,7 +90,7 @@ export default function ContactPage() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col mt-2">
                 {/* Honeypot Spam Protection */}
-                <input type="text" name="honeypot" style={{ display: "none" }} tabIndex={-1} autoComplete="off" value={formData.honeypot} onChange={(e) => setFormData({...formData, honeypot: e.target.value})} />
+                <input type="text" name="honeypot" className="hidden" tabIndex={-1} autoComplete="off" value={formData.honeypot} onChange={(e) => setFormData({...formData, honeypot: e.target.value})} />
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
