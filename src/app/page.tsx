@@ -2,20 +2,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
+import logoSvg from "../../public/assets/svg/logo-transparent.svg";
+import brainSvg from "../../public/assets/svg/brain-nobg.svg";
+import bookSvg from "../../public/assets/svg/book-nobg.svg";
+import plantSvg from "../../public/assets/svg/plant-nobg.svg";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-24 pb-20">
+    <div className="flex flex-col gap-8 md:gap-16 pb-16">
       
       {/* Hero Section */}
-      <section className="relative pt-20 md:pt-32 pb-12 overflow-hidden">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex flex-row items-center justify-center gap-[0.3em] text-[clamp(1.8rem,9vw,7rem)]">
+      <section className="container mx-auto px-4 mt-8 md:mt-16">
+        <div className="flex items-center justify-center">
+          <div className="flex flex-row items-center gap-[0.5em] text-[clamp(1.8rem,9vw,7rem)]">
             
             {/* Left: Large Logo */}
             <FadeIn direction="left" className="relative w-[2.7em] h-[2.7em] shrink-0">
               <Image 
-                src="/assets/svg/logo-transparent.svg" 
+                src={logoSvg} 
                 alt="Progress Together Logo" 
                 fill 
                 className="object-contain" 
@@ -86,7 +90,7 @@ export default function Home() {
           <FadeIn delay={0.1} className="h-full">
             <div className="flex flex-col items-center justify-end h-full gap-3 sm:gap-6">
               <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32">
-                <Image src="/assets/svg/brain-nobg.svg" alt="Think" fill className="object-contain" />
+                <Image src={brainSvg} alt="Think" fill className="object-contain" />
               </div>
               <h3 className="text-[clamp(1.125rem,3.5vw,2.25rem)] font-heading tracking-wide uppercase mt-1 sm:mt-2">Think</h3>
             </div>
@@ -95,7 +99,7 @@ export default function Home() {
           <FadeIn delay={0.2} direction="up" className="h-full">
             <div className="flex flex-col items-center justify-end h-full gap-3 sm:gap-6">
               <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32">
-                <Image src="/assets/svg/book-nobg.svg" alt="Learn" fill className="object-contain" />
+                <Image src={bookSvg} alt="Learn" fill className="object-contain" />
               </div>
               <h3 className="text-[clamp(1.125rem,3.5vw,2.25rem)] font-heading tracking-wide uppercase mt-1 sm:mt-2">Learn</h3>
             </div>
@@ -104,7 +108,7 @@ export default function Home() {
           <FadeIn delay={0.3} className="h-full">
             <div className="flex flex-col items-center justify-end h-full gap-3 sm:gap-6">
               <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32">
-                <Image src="/assets/svg/plant-nobg.svg" alt="Flourish" fill className="object-contain" />
+                <Image src={plantSvg} alt="Flourish" fill className="object-contain" />
               </div>
               <h3 className="text-[clamp(1.125rem,3.5vw,2.25rem)] font-heading tracking-wide uppercase mt-1 sm:mt-2">Flourish</h3>
             </div>

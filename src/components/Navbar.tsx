@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import starSvg from "../../public/assets/svg/star-nobg.svg";
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,9 +24,7 @@ export function Navbar() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group" onClick={closeMenu}>
             <div className="relative w-8 h-8 -translate-y-1">
-import starSvg from "../../public/assets/svg/star-nobg.svg";
-
-// ... [we need to insert the import properly]
+              <Image src={starSvg} alt="Progress Together Logo" fill className="object-contain" />
             </div>
             <span className="font-heading font-semibold text-xl sm:text-2xl md:text-3xl tracking-tight text-primary">
               Progress<span className="text-foreground">Together</span>

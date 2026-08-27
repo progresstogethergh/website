@@ -1,15 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Mail, Phone, MapPin } from "lucide-react";
+import starSvg from "../../public/assets/svg/star-nobg.svg";
 
 export function Footer() {
   return (
-    <footer className="bg-muted py-12 mt-20 border-t border-border">
+    <footer className="bg-muted border-t border-border/50 py-12 md:py-16 mt-auto">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="relative w-8 h-8 -translate-y-1">
-                <Image src="/assets/svg/star-nobg.svg" alt="Progress Together Logo" fill className="object-contain" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-4 group">
+              <div className="relative w-6 h-6 -translate-y-1">
+                <Image src={starSvg} alt="Progress Together Logo" fill className="object-contain" />
               </div>
               <span className="font-heading font-semibold text-2xl sm:text-3xl text-primary">
                 Progress<span className="text-foreground">Together</span>
