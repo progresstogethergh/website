@@ -6,6 +6,7 @@ import logoSvg from "../../public/assets/svg/logo-transparent.svg";
 import brainSvg from "../../public/assets/svg/brain-nobg.svg";
 import bookSvg from "../../public/assets/svg/book-nobg.svg";
 import plantSvg from "../../public/assets/svg/plant-nobg.svg";
+import portraitImg from "../../public/assets/img/portrait1.jpg";
 
 export default function Home() {
   return (
@@ -72,9 +73,9 @@ export default function Home() {
                   Read my full story <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
-              <div>
-                <div className="aspect-[4/3] bg-background/50 sketchy-border flex items-center justify-center">
-                  <span className="text-muted-foreground font-medium italic">MaryEllen Portrait Placeholder</span>
+              <div className="flex justify-center">
+                <div className="aspect-square w-full max-w-sm bg-background/50 sketchy-border flex items-center justify-center relative overflow-hidden">
+                  <Image src={portraitImg} alt="MaryEllen Lees" fill className="object-cover object-[center_30%]" />
                 </div>
               </div>
             </div>
