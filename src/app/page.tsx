@@ -65,7 +65,7 @@ export default function Home() {
           <div className="bg-muted sketchy-border p-6 sm:p-8 md:p-16 rounded-[30px] md:rounded-[40px] relative overflow-hidden">
             <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
               <div>
-                <h2 className="text-4xl font-heading mb-6">Meet MaryEllen</h2>
+                <h2 className="text-4xl font-heading mb-6">Meet Maryellen</h2>
                 <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
                   With over two decades of experience teaching and developing curriculum for students of all ages, I bring expertise, creativity, and enthusiasm to every session. My goal is to meet students where they are, tailor instruction to their unique needs, and equip them to become confident, independent learners who truly flourish.
                 </p>
@@ -75,7 +75,7 @@ export default function Home() {
               </div>
               <div className="flex justify-center">
                 <div className="aspect-square w-full max-w-sm bg-background/50 sketchy-border flex items-center justify-center relative overflow-hidden">
-                  <Image src={portraitImg} alt="MaryEllen Lees" fill className="object-cover object-[center_30%]" />
+                  <Image src={portraitImg} alt="Maryellen Lees" fill className="object-cover object-[center_30%]" />
                 </div>
               </div>
             </div>
