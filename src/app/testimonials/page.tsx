@@ -4,7 +4,7 @@ import { Quote } from "lucide-react";
 export default function TestimonialsPage() {
   const testimonials = [
     {
-      quote: "Maryellen possesses an exceptional aptitude for inspiring students to develop a life long appreciation for writing and literature. Her extensive experience in methodical writing instruction makes her an ideal candidate to provide personalized tutoring services for any student.",
+      quote: "MaryEllen possesses an exceptional aptitude for inspiring students to develop a life long appreciation for writing and literature. Her extensive experience in methodical writing instruction makes her an ideal candidate to provide personalized tutoring services for any student.",
       author: "Amy Claire",
       role: "Campus Administrator, Providence Extension Program",
       delay: 0.1,
@@ -16,7 +16,7 @@ export default function TestimonialsPage() {
       delay: 0.2,
     },
     {
-      quote: "Maryellen Lees has tutored three of my children. Subjects included logic and middle and high school levels of English Composition and Literature. All three benefited from her practical, consistent, quantifiable methodology, detailed instruction, careful review of multiple drafts, and rubrics for students to assess their own work. I also appreciated her contributions to my students' educations in literature and logic, areas where I felt less qualified.",
+      quote: "MaryEllen Lees has tutored three of my children. Subjects included logic and middle and high school levels of English Composition and Literature. All three benefited from her practical, consistent, quantifiable methodology, detailed instruction, careful review of multiple drafts, and rubrics for students to assess their own work. I also appreciated her contributions to my students' educations in literature and logic, areas where I felt less qualified.",
       author: "Heather Luxon",
       role: "Parent",
       delay: 0.3,

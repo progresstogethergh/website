@@ -51,7 +51,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-heading text-lg mb-1">Phone</h3>
-                  <a href="tel:+15135052995" className="text-muted-foreground hover:text-primary transition-colors block">(123) 456-7890</a>
+                  <a href="tel:+15135052995" className="text-muted-foreground hover:text-primary transition-colors block">(513) 505-2995</a>
                 </div>
               </div>
 
@@ -71,7 +71,10 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-heading text-lg mb-1">Location</h3>
-                  <p className="text-muted-foreground">Serving the Greater Area & Online globally via Zoom.</p>
+                  <p className="text-muted-foreground">
+                    Centerville, OH<br />
+                    Serving the greater Dayton/Cincinnati Area & Online Globally
+                  </p>
                 </div>
               </div>
             </div>

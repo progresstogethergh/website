@@ -20,14 +20,14 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Progress Together | Maryellen Lees Tutoring",
-  description: "Building skills. Growing confidence. Progress is better together. Customized tutoring by Maryellen Lees.",
+  title: "Progress Together | MaryEllen Lees Tutoring",
+  description: "Building skills. Growing confidence. Progress is better together. Customized tutoring by MaryEllen Lees.",
   metadataBase: new URL("https://progresstogether.net"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Progress Together | Maryellen Lees Tutoring",
+    title: "Progress Together | MaryEllen Lees Tutoring",
     description: "Building skills. Growing confidence. Progress is better together.",
     url: "https://progresstogether.net",
     siteName: "Progress Together",

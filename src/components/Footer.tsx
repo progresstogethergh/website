@@ -7,10 +7,10 @@ export function Footer() {
   return (
     <footer className="bg-muted border-t border-border/50 py-12 md:py-16 mt-auto">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center justify-items-center">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4 group">
+          <div className="flex flex-col items-center">
+            <Link href="/" className="flex items-center justify-center gap-2 mb-4 group">
               <div className="relative w-6 h-6 -translate-y-1">
                 <Image src={starSvg} alt="Progress Together Logo" fill className="object-contain" />
               </div>
@@ -23,7 +23,7 @@ export function Footer() {
             </p>
           </div>
           
-          <div>
+          <div className="flex flex-col items-center">
             <h3 className="font-heading font-semibold text-lg mb-4">Explore</h3>
             <ul className="space-y-2">
               <li>
@@ -38,7 +38,7 @@ export function Footer() {
             </ul>
           </div>
           
-          <div>
+          <div className="flex flex-col items-center">
             <h3 className="font-heading font-semibold text-lg mb-4">Connect</h3>
             <ul className="space-y-2">
               <li>
