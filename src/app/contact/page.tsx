@@ -3,27 +3,64 @@ import { FadeIn } from "@/components/FadeIn";
 import { Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", message: "", honeypot: "" });
+  const [turnstileToken, setTurnstileToken] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.honeypot) return; // Spam detected
+    setErrorMessage("");
+    if (formData.honeypot) {
+      setStatus("success");
+      setFormData({ firstName: "", lastName: "", email: "", message: "", honeypot: "" });
+      return; // Fake success for bots
+    }
     
     // Basic validation
     if (!formData.firstName || !formData.email || !formData.message) {
       setStatus("error");
+      setErrorMessage("Please fill out all required fields.");
+      return;
+    }
+
+    if (!turnstileToken) {
+      setStatus("error");
+      setErrorMessage("Please complete the captcha.");
       return;
     }
 
     setStatus("submitting");
-    // Simulate submission since no backend is configured yet
-    setTimeout(() => {
+    
+    try {
+      const res = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          email: formData.email,
+          message: formData.message,
+          honeypot: formData.honeypot,
+          turnstileToken 
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong.');
+      }
+      
       setStatus("success");
       setFormData({ firstName: "", lastName: "", email: "", message: "", honeypot: "" });
-    }, 1500);
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      setErrorMessage(err instanceof Error ? err.message : 'Submission failed.');
+    }
   };
 
   return (
@@ -34,7 +71,7 @@ export default function ContactPage() {
         <FadeIn className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h1 className="text-5xl md:text-6xl font-heading mb-6">Let&apos;s Connect</h1>
           <p className="text-xl text-muted-foreground">
-            Have questions or ready to get started? Reach out to discuss how we can help your student thrive.
+            Have questions or ready to get started?<br />Reach out to discuss how we can help your student thrive.
           </p>
         </FadeIn>
 
@@ -80,8 +117,8 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Quick Contact Form Placeholder */}
-          <div className="bg-muted sketchy-border p-6 sm:p-8 md:p-12 h-full flex flex-col justify-center">
+          {/* Quick Contact Form */}
+          <div className="bg-muted sketchy-border p-6 sm:p-8 md:p-12 min-h-[680px] h-full flex flex-col justify-center">
             <h2 className="text-3xl font-heading mb-6">Send a Message</h2>
             {status === "success" ? (
               <div className="flex flex-col items-center justify-center text-center p-8 flex-1">
@@ -114,9 +151,18 @@ export default function ContactPage() {
                   <textarea required value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full h-32 bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none" placeholder="Tell me a little about your student and what you're looking for..."></textarea>
                 </div>
                 
-                {status === "error" && <p className="text-destructive text-sm font-medium">Please fill out all required fields.</p>}
+                {status === "error" && <p className="text-destructive text-sm font-medium">{errorMessage}</p>}
                 
-                <Button disabled={status === "submitting"} type="submit" className="w-full sketchy-btn bg-primary text-primary-foreground hover:bg-primary/90 mt-4 py-6 text-lg disabled:opacity-50 transition-all">
+                <div className="flex justify-center mt-2">
+                  <Turnstile 
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""} 
+                    onSuccess={(token) => setTurnstileToken(token)}
+                    onError={() => setTurnstileToken("")}
+                    onExpire={() => setTurnstileToken("")}
+                  />
+                </div>
+
+                <Button disabled={status === "submitting" || !turnstileToken} type="submit" className="w-full sketchy-btn bg-primary text-primary-foreground hover:bg-primary/90 mt-4 py-6 text-lg disabled:opacity-50 transition-all">
                   {status === "submitting" ? "Sending..." : "Send Message"}
                 </Button>
               </form>
