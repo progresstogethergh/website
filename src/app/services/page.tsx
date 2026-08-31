@@ -10,10 +10,10 @@ export default function ServicesPage() {
       <div className="container mx-auto px-4">
         
         {/* Header */}
-        <FadeIn className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+        <FadeIn className="text-center max-w-4xl mx-auto mb-12 md:mb-20">
           <h1 className="text-5xl md:text-6xl font-heading mb-6">Tutoring Services</h1>
-          <p className="text-xl text-muted-foreground">
-            Customized learning plans designed to address your student&apos;s specific needs, learning style, and goals.
+          <p className="text-2xl md:text-3xl text-muted-foreground">
+            Customized learning plans designed to address your student&apos;s specific needs.
           </p>
         </FadeIn>
 
@@ -37,7 +37,7 @@ export default function ServicesPage() {
             </ul>
           </div>
           
-          <div className="bg-card p-6 sm:p-8 md:p-12 sketchy-border h-full flex flex-col relative mt-0 md:mt-8">
+          <div className="bg-card p-6 sm:p-8 md:p-12 sketchy-border h-full flex flex-col relative">
             <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-8 mx-auto">
               <MapPin className="w-8 h-8" />
             </div>
@@ -63,7 +63,7 @@ export default function ServicesPage() {
           <div className="space-y-4">
             {[
               {
-                title: "1. Comprehensive Academic Tutoring",
+                title: "Comprehensive Academic Tutoring",
                 items: [
                   "All ages, online and in-person, individual or group",
                   "Subject-specific academic support",
@@ -75,7 +75,7 @@ export default function ServicesPage() {
                 ]
               },
               {
-                title: "2. Academic Skills & Strategies",
+                title: "Academic Skills & Strategies",
                 items: [
                   "Time management & organization",
                   "Planning & prioritization",
@@ -87,7 +87,7 @@ export default function ServicesPage() {
                 ]
               },
               {
-                title: "3. Mentoring",
+                title: "Mentoring",
                 items: [
                   "Academic mentoring",
                   "High School-to-college transition",
@@ -99,7 +99,7 @@ export default function ServicesPage() {
                 ]
               },
               {
-                title: "4. Career & Professional Coaching",
+                title: "Career & Professional Coaching",
                 items: [
                   "Career exploration & planning",
                   "Strengths & skills assessment",
@@ -111,7 +111,7 @@ export default function ServicesPage() {
                 ]
               },
               {
-                title: "5. Life Coaching",
+                title: "Life Coaching",
                 items: [
                   "Personal goals & planning",
                   "Decision-making & problem-solving",
@@ -122,7 +122,7 @@ export default function ServicesPage() {
                 ]
               },
               {
-                title: "6. Specialized & Supplemental Offerings",
+                title: "Specialized & Supplemental Offerings",
                 items: [
                   "Parent/student academic consulting",
                   "Curriculum development",
@@ -132,7 +132,7 @@ export default function ServicesPage() {
                 ]
               },
               {
-                title: "7. Group Learning & Workshops",
+                title: "Group Learning & Workshops",
                 items: [
                   "Writing workshops",
                   "Study-skills & time management workshops",
@@ -145,7 +145,7 @@ export default function ServicesPage() {
                 ]
               },
               {
-                title: "8. Premium & Ongoing Services",
+                title: "Premium & Ongoing Services",
                 items: [
                   "Monthly coaching packages",
                   "Weekly tutoring packages",
@@ -192,7 +192,9 @@ export default function ServicesPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-muted-foreground mb-6">Ready to schedule a session or have more questions?</p>
+            <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+              Have questions or ready to get started?<br/>Let&apos;s take the next step together.
+            </p>
             <Link href="/contact">
               <Button size="lg" className="sketchy-btn bg-secondary text-secondary-foreground hover:bg-secondary/90 border-secondary px-8">
                 Get in Touch

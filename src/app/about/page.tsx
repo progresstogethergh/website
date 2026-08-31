@@ -11,8 +11,8 @@ export default function AboutPage() {
         {/* Header */}
         <FadeIn className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
           <h1 className="text-5xl md:text-6xl font-heading mb-6">Meet Your Tutor</h1>
-          <p className="text-xl text-muted-foreground">
-            Maryellen Lees
+          <p className="text-3xl font-heading font-bold text-foreground">
+            MaryEllen Lees
           </p>
         </FadeIn>
 
@@ -21,10 +21,10 @@ export default function AboutPage() {
           <FadeIn direction="left" className="order-2 md:order-1">
             <div className="space-y-6 text-lg text-foreground/90 leading-relaxed">
               <p>
-                With over two decades of experience in education, I bring expertise, creativity, and enthusiasm to every educational setting—whether in classroom teaching, one-on-one tutoring, or mentoring. I believe that true learning happens when students feel supported, challenged, and understood.
+                With over two decades of experience in education, I bring expertise, creativity, and enthusiasm to every educational setting, whether in classroom teaching, one-on-one tutoring, or mentoring. I believe that true learning happens when students feel supported, challenged, and understood.
               </p>
               <p>
-                Throughout my career, I have had the joy of teaching and developing curriculum for a wide variety of subjects, including literature, writing, grammar, logic, and piano pedagogy. I&apos;ve worked with students of all ages, from young children to adults. Beyond simply sharing subject knowledge, I make it a priority to recognize each student&apos;s unique needs and learning style, tailoring my instruction to help them discover their own potential and truly flourish.
+                Throughout my career, I have had the joy of teaching and developing resources for a wide variety of subjects, including literature, writing, grammar, logic, and piano. I&apos;ve worked with students of all ages, from young children to adults. Beyond simply sharing subject knowledge, I make it a priority to recognize each student&apos;s unique needs and learning style, tailoring my instruction to help them discover their own potential and truly flourish.
               </p>
               <div className="pt-4 border-l-4 border-primary pl-6 my-8 italic text-xl text-foreground/80">
                 &ldquo;My goal is to meet students where they are, help them recognize their strengths, and equip them to become confident readers, writers, and critical thinkers who communicate clearly and succeed independently.&rdquo;
