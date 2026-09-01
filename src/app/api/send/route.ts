@@ -5,10 +5,11 @@ import { getCloudflareContext } from '@opennextjs/cloudflare';
 export async function POST(request: Request) {
   try {
     const { env } = getCloudflareContext();
-    const apiKey = env.RESEND_API_KEY || process.env.RESEND_API_KEY;
-    const senderEmail = env.SENDER_EMAIL || process.env.SENDER_EMAIL;
-    const receiverEmail = env.CONTACT_RECEIVER_EMAIL || process.env.CONTACT_RECEIVER_EMAIL;
-    const turnstileSecret = env.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_SECRET_KEY;
+    const cfEnv = env as Record<string, string>;
+    const apiKey = cfEnv.RESEND_API_KEY || process.env.RESEND_API_KEY;
+    const senderEmail = cfEnv.SENDER_EMAIL || process.env.SENDER_EMAIL;
+    const receiverEmail = cfEnv.CONTACT_RECEIVER_EMAIL || process.env.CONTACT_RECEIVER_EMAIL;
+    const turnstileSecret = cfEnv.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_SECRET_KEY;
 
     if (!apiKey) throw new Error("Missing RESEND_API_KEY in environment variables.");
     if (!senderEmail) throw new Error("Missing SENDER_EMAIL in environment variables.");
