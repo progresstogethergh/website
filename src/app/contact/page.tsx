@@ -48,10 +48,15 @@ export default function ContactPage() {
         }),
       });
 
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch (err) {
+        console.error("Failed to parse JSON response:", err);
+      }
 
       if (!res.ok) {
-        throw new Error(data.error || 'Something went wrong.');
+        throw new Error(data?.error || 'Something went wrong. The server may be misconfigured.');
       }
       
       setStatus("success");
