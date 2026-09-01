@@ -9,7 +9,7 @@
     "binding": "ASSETS"
   },
   "vars": {
-    "SENDER_EMAIL": "admin@progresstogether.net",
+    "SENDER_EMAIL": "contact-form@progresstogether.net",
     "CONTACT_RECEIVER_EMAIL": "admin@progresstogether.net",
     "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAAEjVKAtgubDV6LB-"
   }
