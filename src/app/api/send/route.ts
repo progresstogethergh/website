@@ -68,7 +68,10 @@ export async function POST(request: Request) {
       from: `Progress Together Contact <${senderEmail}>`,
       to: [receiverEmail as string],
       replyTo: email,
-      subject: `New submission from ${name}`,
+      subject: `New submission from ${name} [${new Date().toLocaleString()}]`,
+      headers: {
+        'X-Entity-Ref-ID': crypto.randomUUID(),
+      },
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
       html: `
         <div style="font-family: sans-serif; line-height: 1.5;">
