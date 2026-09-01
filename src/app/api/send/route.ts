@@ -1,9 +1,21 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 
 export async function POST(request: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const { env } = getCloudflareContext();
+    const apiKey = env.RESEND_API_KEY || process.env.RESEND_API_KEY;
+    const senderEmail = env.SENDER_EMAIL || process.env.SENDER_EMAIL;
+    const receiverEmail = env.CONTACT_RECEIVER_EMAIL || process.env.CONTACT_RECEIVER_EMAIL;
+    const turnstileSecret = env.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_SECRET_KEY;
+
+    if (!apiKey) throw new Error("Missing RESEND_API_KEY in environment variables.");
+    if (!senderEmail) throw new Error("Missing SENDER_EMAIL in environment variables.");
+    if (!receiverEmail) throw new Error("Missing CONTACT_RECEIVER_EMAIL in environment variables.");
+    if (!turnstileSecret) throw new Error("Missing TURNSTILE_SECRET_KEY in environment variables.");
+
+    const resend = new Resend(apiKey as string);
     const { name, email, message, honeypot, turnstileToken } = await request.json();
 
     if (honeypot) {
@@ -20,7 +32,7 @@ export async function POST(request: Request) {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: `secret=${process.env.TURNSTILE_SECRET_KEY}&response=${turnstileToken}`,
+      body: `secret=${turnstileSecret}&response=${turnstileToken}`,
     });
 
     const verifyData = await verifyRes.json();
@@ -36,8 +48,8 @@ export async function POST(request: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: `Progress Together Contact <${process.env.SENDER_EMAIL || 'admin@progresstogether.net'}>`,
-      to: [process.env.CONTACT_RECEIVER_EMAIL || 'admin@progresstogether.net'],
+      from: `Progress Together Contact <${senderEmail}>`,
+      to: [receiverEmail as string],
       replyTo: email,
       subject: `New submission from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
