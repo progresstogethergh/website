@@ -4,19 +4,19 @@ import { Quote } from "lucide-react";
 export default function TestimonialsPage() {
   const testimonials = [
     {
-      quote: "MaryEllen possesses an exceptional aptitude for inspiring students to develop a life long appreciation for writing and literature. Her extensive experience in methodical writing instruction makes her an ideal candidate to provide personalized tutoring services for any student.",
+      quote: "Maryellen possesses an exceptional aptitude for inspiring students to develop a life long appreciation for writing and literature. Her extensive experience in methodical writing instruction makes her an ideal candidate to provide personalized tutoring services for any student.",
       author: "Amy Claire",
       role: "Campus Administrator, Providence Extension Program",
       delay: 0.1,
     },
     {
-      quote: "MaryEllen Lees is an excellent instructor who brings both academic expertise and genuine care to her work with students. While she has a particular strength in composition and rhetoric, her teaching extends well beyond writing, and she is gifted at working with students across a variety of ages and abilities. She is especially effective with students who struggle academically, meeting them where they are, and gently moving them toward where they need to be. Her natural approach is to come alongside students, building their confidence while also challenging them to grow. She has a particular gift for working with teens and I cannot recommend her highly enough.",
+      quote: "Maryellen Lees is an excellent instructor who brings both academic expertise and genuine care to her work with students. While she has a particular strength in composition and rhetoric, her teaching extends well beyond writing, and she is gifted at working with students across a variety of ages and abilities. She is especially effective with students who struggle academically, meeting them where they are, and gently moving them toward where they need to be. Her natural approach is to come alongside students, building their confidence while also challenging them to grow. She has a particular gift for working with teens and I cannot recommend her highly enough.",
       author: "Joanne Mastronicola",
       role: "Operations Manager, Providence Extension Program",
       delay: 0.2,
     },
     {
-      quote: "MaryEllen Lees has tutored three of my children. Subjects included logic and middle and high school levels of English Composition and Literature. All three benefited from her practical, consistent, quantifiable methodology, detailed instruction, careful review of multiple drafts, and rubrics for students to assess their own work. I also appreciated her contributions to my students' educations in literature and logic, areas where I felt less qualified.",
+      quote: "Maryellen Lees has tutored three of my children. Subjects included logic and middle and high school levels of English Composition and Literature. All three benefited from her practical, consistent, quantifiable methodology, detailed instruction, careful review of multiple drafts, and rubrics for students to assess their own work. I also appreciated her contributions to my students' educations in literature and logic, areas where I felt less qualified.",
       author: "Heather Luxon",
       role: "Parent",
       delay: 0.3,

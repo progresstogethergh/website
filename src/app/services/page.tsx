@@ -12,7 +12,7 @@ export default function ServicesPage() {
         {/* Header */}
         <FadeIn className="text-center max-w-4xl mx-auto mb-12 md:mb-20">
           <h1 className="text-5xl md:text-6xl font-heading mb-6">Tutoring Services</h1>
-          <p className="text-2xl md:text-3xl text-muted-foreground">
+          <p className="text-xl text-muted-foreground">
             Customized learning plans designed to address your student&apos;s specific needs.
           </p>
         </FadeIn>
@@ -151,8 +151,6 @@ export default function ServicesPage() {
                   "Weekly tutoring packages",
                   "Semester-long academic support",
                   "Year-round mentoring",
-                  "Career-transition packages",
-                  "Executive coaching retainers",
                   "Customized education/coaching plans",
                   "Progress tracking and reporting",
                   "Multi-session intensive programs"

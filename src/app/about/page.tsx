@@ -12,7 +12,7 @@ export default function AboutPage() {
         <FadeIn className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
           <h1 className="text-5xl md:text-6xl font-heading mb-6">Meet Your Tutor</h1>
           <p className="text-3xl font-heading font-bold text-foreground">
-            MaryEllen Lees
+            Maryellen Lees
           </p>
         </FadeIn>
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
           <FadeIn direction="right" delay={0.2} className="order-1 md:order-2">
             <div className="relative">
               <div className="aspect-[3/4] bg-muted sketchy-border flex items-center justify-center relative z-10 w-full max-w-md mx-auto overflow-hidden">
-                <Image src={portraitImg} alt="MaryEllen Lees Portrait" fill className="object-cover object-[center_35%]" />
+                <Image src={portraitImg} alt="Maryellen Lees Portrait" fill className="object-cover object-[center_35%]" />
               </div>
               {/* Decorative elements */}
               <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-primary/20 rounded-full blur-xl -z-0"></div>
