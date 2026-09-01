@@ -2,10 +2,18 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 
+export const runtime = 'edge';
+
 export async function POST(request: Request) {
   try {
-    const { env } = getCloudflareContext();
-    const cfEnv = env as Record<string, string>;
+    let cfEnv: Record<string, string> = {};
+    try {
+      const { env } = getCloudflareContext();
+      cfEnv = env as Record<string, string>;
+    } catch (e) {
+      // Fallback for local development if getCloudflareContext throws
+    }
+
     const apiKey = cfEnv.RESEND_API_KEY || process.env.RESEND_API_KEY;
     const senderEmail = cfEnv.SENDER_EMAIL || process.env.SENDER_EMAIL;
     const receiverEmail = cfEnv.CONTACT_RECEIVER_EMAIL || process.env.CONTACT_RECEIVER_EMAIL;
@@ -17,23 +25,32 @@ export async function POST(request: Request) {
     if (!turnstileSecret) throw new Error("Missing TURNSTILE_SECRET_KEY in environment variables.");
 
     const resend = new Resend(apiKey as string);
-    const { name, email, message, honeypot, turnstileToken } = await request.json();
+    const body = await request.json();
+    const email = body.email;
+    const message = body.message;
+    const honeypot = body.honeypot;
+    const turnstileToken = body.turnstileToken;
+    const name = body.name || (body.firstName ? `${body.firstName} ${body.lastName || ''}`.trim() : '');
 
     if (honeypot) {
-      return NextResponse.json({ error: 'Spam detected.' }, { status: 400 });
+      // Fake success for bots
+      return NextResponse.json({ success: true, message: 'Message sent.' }, { status: 200 });
     }
 
     if (!turnstileToken) {
       return NextResponse.json({ error: 'Turnstile token missing.' }, { status: 400 });
     }
 
-    // Verify Turnstile token
+    // Verify Turnstile token securely
     const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: `secret=${turnstileSecret}&response=${turnstileToken}`,
+      body: new URLSearchParams({
+        secret: turnstileSecret,
+        response: turnstileToken,
+      }).toString(),
     });
 
     const verifyData = await verifyRes.json();
