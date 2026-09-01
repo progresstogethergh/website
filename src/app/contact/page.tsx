@@ -56,15 +56,15 @@ export default function ContactPage() {
       }
 
       if (!res.ok) {
-        throw new Error(data?.error || 'Something went wrong. The server may be misconfigured.');
+        throw new Error(data?.error || 'Server error occurred during submission.');
       }
       
       setStatus("success");
       setFormData({ firstName: "", lastName: "", email: "", message: "", honeypot: "" });
     } catch (err) {
-      console.error(err);
+      console.error("Form submission error:", err);
       setStatus("error");
-      setErrorMessage(err instanceof Error ? err.message : 'Submission failed.');
+      setErrorMessage("Something went wrong. Please try again later.");
     }
   };
 
